@@ -12,4 +12,15 @@ description1 = response.parse[0]["text"]
 description2 = response.parse[1]["text"]
 partofspeech2 = response.parse[1]["partOfSpeech"]
 
-p "Your animal you wanted to know more about was #{word1}. One definition of this animal is '#{description1}'. The part of speech of this definition is #{partofspeech1}. Another definition is '#{description2}' The part of speech of this definition is #{partofspeech2}."
+
+
+
+response2 = HTTP.get("https://api.wordnik.com/v4/word.json/weasel/pronunciations?useCanonical=false&limit=50&api_key=YOURAPIKEY")
+
+
+
+parse2 = response2.parse
+
+pronounciation = parse2[0]["raw"]
+
+p "Your animal you wanted to know more about was #{word1}. The pronounciation of this word is #{pronounciation}. One definition of this animal is '#{description1}'. The part of speech of this definition is #{partofspeech1}. Another definition is '#{description2}' The part of speech of this definition is #{partofspeech2}."
